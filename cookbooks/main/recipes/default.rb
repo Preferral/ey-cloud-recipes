@@ -4,6 +4,12 @@
 #  }
 #end
 
+# uncomment to install and turn on LogEntries
+require_recipe 'le'
+
+# uncomment to turn on Papertrailapp for log aggregation/searching etc. Remember to edit cookbooks/papertrail/recipes/default.rb first!
+# include_recipe "papertrail"
+
 # uncomment to turn on thinking sphinx 2/ultra sphinx. Remember to edit cookbooks/sphinx/recipes/default.rb first!
 # include_recipe "sphinx"
 
