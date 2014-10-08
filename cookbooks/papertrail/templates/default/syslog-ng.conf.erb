@@ -3,20 +3,20 @@
 #
 # Syslog-ng default configuration file for Gentoo Linux
 
-options { 
-	threaded(yes);
-	chain_hostnames(no); 
+options {
+  threaded(yes);
+  chain_hostnames(no);
 
-	# The default action of syslog-ng is to log a STATS line
-	# to the file every 10 minutes.  That's pretty ugly after a while.
-	# Change it to every 12 hours so you get a nice daily update of
-	# how many messages syslog-ng missed (0).
-	stats_freq(43200); 
-	# The default action of syslog-ng is to log a MARK line
-	# to the file every 20 minutes.  That's seems high for most
-	# people so turn it down to once an hour.  Set it to zero
-	# if you don't want the functionality at all.
-	mark_freq(3600); 
+  # The default action of syslog-ng is to log a STATS line
+  # to the file every 10 minutes.  That's pretty ugly after a while.
+  # Change it to every 12 hours so you get a nice daily update of
+  # how many messages syslog-ng missed (0).
+  stats_freq(43200);
+  # The default action of syslog-ng is to log a MARK line
+  # to the file every 20 minutes.  That's seems high for most
+  # people so turn it down to once an hour.  Set it to zero
+  # if you don't want the functionality at all.
+  mark_freq(3600);
 };
 
 source src {
@@ -43,7 +43,7 @@ destination d_papertrail {
   # UDP (insecure)
   # udp("logs.papertrailapp.com" port(<%= @port %>));
   # TLS
-  tcp("logs.papertrailapp.com" port(<%= @port %>) tls(ca_dir("/etc/syslog-ng/cert.d")) );
+  tcp("<%= @destination_host %>" port(<%= @port %>) tls(ca_dir("/etc/syslog-ng/cert.d")) );
 };
 log {
   source(src); destination(d_papertrail);
