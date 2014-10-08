@@ -16,7 +16,7 @@ follow_paths = [
 ]
 (node[:applications] || []).each do |app_name, app_info|
   follow_paths << "/var/log/nginx/#{app_name}.access.log"
-  follow_paths << "/var/log/nginx/#{app_name}.access.log.ssl"
+  follow_paths << "/var/log/nginx/#{app_name}.access.ssl.log"
 end
 
 follow_paths.each do |path|
